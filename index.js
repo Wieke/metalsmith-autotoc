@@ -114,7 +114,7 @@ module.exports = function(options) {
       } else {
         var $ = cheerio.load(file.contents, { decodeEntities: false });
         var headers = [];
-        $([file.autotocSelector, options.selector, 'h3, h4'].filter(function(n){ return n !== undefined; }).join(', ')).each(function(){
+        $([file.autotocSelector, options.selector].filter(function(n){ return n !== undefined; }).join(', ')).each(function(){
             var $this = $(this);
             $this.attr('id', options.slug(entities.decode($this.text()), $this.attr('id')));
             headers.push(
